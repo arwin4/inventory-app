@@ -1,8 +1,4 @@
-/* eslint-disable no-underscore-dangle */
-// Need underscore to reference _id
-
 /* eslint-disable no-console */
-// For debugging
 
 const mongoose = require('mongoose');
 const Dummy = require('./models/dummy');

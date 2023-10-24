@@ -9,5 +9,5 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
-  rules: {},
+  rules: { 'no-underscore-dangle': 'off' }, // Need underscore to reference mongo _id
 };

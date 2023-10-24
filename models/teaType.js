@@ -5,4 +5,8 @@ const teaTypeSchema = new mongoose.Schema({
   description: String,
 });
 
+teaTypeSchema.virtual('url').get(function () {
+  return `/catalog/type/${this._id}`;
+});
+
 module.exports = mongoose.model('TeaType', teaTypeSchema);
