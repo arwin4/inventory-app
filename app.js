@@ -1,12 +1,19 @@
+/* eslint-disable no-console */
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
 const catalogRouter = require('./routes/catalog');
 const usersRouter = require('./routes/users');
+
+// Import Mongo connection string
+require('dotenv').config();
+
+const mongoString = process.env.MONGODB_CONNECTION_STRING;
 
 const app = express();
 
@@ -40,6 +47,20 @@ app.use((err, req, res) => {
   res.render('error');
 });
 
-console.log('Server started.');
+async function connectToMongoAtlas() {
+  console.log('Connecting to MongoDB Atlas...');
+  try {
+    await mongoose.connect(mongoString);
+  } catch (error) {
+    console.log(error);
+  }
+  console.log('Connected to MongoDB Atlas.');
+}
+
+connectToMongoAtlas()
+  .then(() => {
+    console.log('Server started.');
+  })
+  .catch((err) => console.log(err));
 
 module.exports = app;
