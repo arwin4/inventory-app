@@ -5,7 +5,7 @@ const tea = require('../models/tea');
 
 // Display list of all tea types
 exports.index = asyncHandler(async (req, res) => {
-  const numberOfTeaTypes = await teaType.countDocuments({}).exec();
+  const numberOfTeaTypes = await teaType.countDocuments().exec();
   const allTeaTypes = await teaType.find().exec();
   res.render('teaTypeList', {
     title: 'Tea Types',
