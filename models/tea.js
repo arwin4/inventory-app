@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
 
 const teaSchema = new mongoose.Schema({
-  name: String,
-  description: String,
-  brewTemp: Number,
-  price: Number,
-  currentStock: Number,
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  brewTemp: { type: Number, required: true },
+  price: { type: Number, min: [0, 'Price cannot be negative'], required: true },
+  currentStock: {
+    type: Number,
+    min: [0, 'Stock cannot be negative'],
+    required: true,
+  },
   url: String,
   type: [{ type: mongoose.Schema.ObjectId, ref: 'TeaType' }],
 });
