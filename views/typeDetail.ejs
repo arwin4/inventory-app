@@ -3,10 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title><%= type.name %></title>
   </head>
   <body>
-    <p><%= type.name %></p>
+    <a href="/catalog">Back to catalog</a>
+    <h1><%= type.name %></h1>
     <p><%= type.description %></p>
+
+    <% teasOfThisType.forEach(tea => { %>
+    <h4><%= tea.name %></h4>
+    <ul>
+      <li><%= tea.description %></li>
+      <li>Brewed at <%= tea.brewTemp %> °C</li>
+      <li><%= tea.currentStock %> in stock</li>
+      <li>€ <%= tea.price %>/kg</li>
+    </ul>
+    <% }) %>
   </body>
 </html>
