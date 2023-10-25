@@ -8,14 +8,13 @@
   <body>
     <p>There are <%= numberOfTeaTypes %> types of tea in stock currently.</p>
 
-    <p>
-      <h1>Types of tea</h1>
+    <h1>Types of tea</h1>
+    <ul>
       <% allTeaTypes.forEach(type => { %>
-         <li> 
-         
-          <a href="<%= type.url %>"><%=type.name %></a>
-        </li>
-        <% }); %>
-    </p>
+      <li>
+        <a href="<%= type.url %>"><%= type.name %></a>
+      </li>
+      <% }) %>
+    </ul>
   </body>
 </html>
