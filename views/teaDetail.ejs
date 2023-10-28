@@ -3,19 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= type.name %></title>
+    <title><%= tea.name %></title>
   </head>
   <body>
     <a href="/catalog">Back to catalog</a>
-    <h1><%= type.name %></h1>
-    <p><%= type.description %></p>
+    //
+    <a href="/catalog/type/<%=typeId%>">Back to type</a>
 
-    <% teasOfThisType.forEach(tea => { %>
-    <h4><a href="/catalog/tea/<%=tea._id%>"><%= tea.name %></a></h4>
+    <h1><%= tea.name %></h1>
     <ul>
+      <li><%= tea.description %></li>
+      <li>Brewed at <%= tea.brewTemp %> °C</li>
       <li><%= tea.currentStock %> in stock</li>
       <li>€ <%= tea.price %>/kg</li>
     </ul>
-    <% }) %>
   </body>
 </html>
