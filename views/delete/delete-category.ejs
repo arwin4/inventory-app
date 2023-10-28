@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete <%=category.name%>?</title>
+  </head>
+  <body>
+    <a href="/catalog">Back to catalog</a>
+
+    <% if (teas.length > 0) { %>
+    <p>
+      <strong>WARNING.</strong> The
+      <strong><%= category.name %></strong> category is associated with the
+      following teas: <% teas.forEach(tea => { %>
+      <li><%= tea.name %></li>
+      <% }) %>
+    </p>
+    <!-- TODO: update link to update Category -->
+    <p>
+      By deleting this category, these teas will also be deleted. You may want
+      to <a href="/">change this category's details instead</a>.
+    </p>
+    <% } else { %>
+    <p>
+      The <strong><%= category.name %></strong> category does not have any teas
+      listed.
+    </p>
+    <% } %>
+    <p>Delete <strong><%= category.name %>?</strong></p>
+
+    <button
+      onclick="window.location.href='/catalog/category-deleted/<%=category.id%>'"
+    >
+      Confirm deletion
+    </button>
+  </body>
+</html>

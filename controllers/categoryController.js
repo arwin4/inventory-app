@@ -79,3 +79,32 @@ exports.newCategoryPost = [
     }
   }),
 ];
+
+// Handle category deletion
+exports.deleteCategory = asyncHandler(async (req, res) => {
+  const categoryId = req.params.id;
+  const category = await TeaCategory.findById(categoryId).exec();
+  if (category === null) {
+    res.render('delete/category-does-not-exist');
+  }
+
+  // Find all teas of this category
+  const teas = await tea.find({ category: { _id: categoryId } }).exec();
+
+  res.render('delete/delete-category', { category, teas });
+});
+
+// Display confirmation of category deletion
+exports.categoryDeleted = asyncHandler(async (req, res) => {
+  const categoryId = req.params.id;
+  try {
+    // Delete this category's teas and the category itself
+    await tea.deleteMany({ category: { _id: categoryId } }).exec();
+    await TeaCategory.findByIdAndDelete(categoryId).exec();
+  } catch (error) {
+    res.render('delete/category-deleted', { error });
+  }
+  // Display confirmation
+  const error = null;
+  res.render('delete/category-deleted', { error });
+});

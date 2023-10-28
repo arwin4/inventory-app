@@ -17,5 +17,11 @@
       <li>€ <%= tea.price %>/kg</li>
     </ul>
     <% }) %>
+
+    <button
+      onclick="window.location.href='/catalog/delete-category/<%=category.id%>'"
+    >
+      Delete this category
+    </button>
   </body>
 </html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Category deleted</title>
+  </head>
+  <body>
+    <% if (error) { %>
+    <p>Sorry, something went wrong while trying to delete this category.</p>
+    <p>Error message:</p>
+    <p style="font-family: monospace"><%= error %></p>
+    <% } else { %>
+    <p><strong>Category deleted.</strong></p>
+    <p>If any teas were in this category, they have also been deleted.</p>
+    <% } %>
+    <a href="/catalog">Back to catalog</a>
+  </body>
+</html>

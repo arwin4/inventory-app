@@ -21,4 +21,10 @@ router.get('/new-category', categoryController.newCategory);
 // POST request for new category form
 router.post('/new-category', categoryController.newCategoryPost);
 
+// GET request for delete category
+router.get('/delete-category/:id', categoryController.deleteCategory);
+
+// GET request for confirmation of category deletion
+router.get('/category-deleted/:id', categoryController.categoryDeleted);
+
 module.exports = router;
