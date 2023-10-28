@@ -23,6 +23,8 @@ async function addTeas() {
     description: 'Less withered and oxidized than black teas',
   });
 
+  await Promise.all([blackTea.save(), greenTea.save()]);
+
   // Create tea documents
   const earlGrey = new Tea({
     name: 'Earl Grey',
@@ -65,8 +67,6 @@ async function addTeas() {
   });
 
   await Promise.all([
-    blackTea.save(),
-    greenTea.save(),
     earlGrey.save(),
     darjeeling.save(),
     sencha.save(),
