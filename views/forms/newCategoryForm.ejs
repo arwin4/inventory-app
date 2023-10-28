@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add a new category</title>
+  </head>
+  <body>
+    <a href="/catalog">Back to catalog</a>
+    <h1>Add a new category</h1>
+    <form method="post" action="">
+      <% if (errors) { errors.forEach(error => { %>
+      <li><%= error.msg %></li>
+      <% }); } %>
+
+      <div>
+        <label for="name">Category name</label>
+        <input type="text" name="name" id="name" required="true" />
+      </div>
+
+      <div>
+        <label for="description">Short description</label>
+        <input type="text" name="description" id="description" />
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
