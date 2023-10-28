@@ -1,16 +1,16 @@
 const asyncHandler = require('express-async-handler');
 
-const teaType = require('../models/teaType');
+const teaCategory = require('../models/teaCategory');
 const tea = require('../models/tea');
 
-// Display list of all tea types
+// Display list of all tea categories
 exports.index = asyncHandler(async (req, res) => {
-  const numberOfTeaTypes = await teaType.countDocuments({}).exec();
-  const allTeaTypes = await teaType.find().exec();
-  res.render('teaTypeList', {
-    title: 'Tea Types',
-    numberOfTeaTypes,
-    allTeaTypes,
+  const numberOfTeaCategories = await teaCategory.countDocuments({}).exec();
+  const allTeaCategories = await teaCategory.find().exec();
+  res.render('teaCategoryList', {
+    title: 'Tea Categories',
+    numberOfTeaCategories,
+    allTeaCategories,
   });
 });
 
@@ -18,7 +18,7 @@ exports.index = asyncHandler(async (req, res) => {
 exports.teaDetail = asyncHandler(async (req, res) => {
   const teaID = req.params.id;
   const thisTea = await tea.findById(teaID);
-  const typeId = thisTea.type[0]._id.toString();
+  const categoryId = thisTea.category[0]._id.toString();
 
-  res.render('teaDetail', { tea: thisTea, typeId });
+  res.render('teaDetail', { tea: thisTea, categoryId });
 });

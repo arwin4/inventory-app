@@ -3,14 +3,14 @@ const express = require('express');
 const router = express.Router();
 
 // Require controllers
-const typeController = require('../controllers/typeController');
+const categoryController = require('../controllers/categoryController');
 const teaController = require('../controllers/teaController');
 
 // Render catalog at index
-router.get('/', typeController.index);
+router.get('/', categoryController.index);
 
-// GET request for one tea type
-router.get('/type/:id', typeController.typeDetail);
+// GET request for one tea category
+router.get('/category/:id', categoryController.categoryDetail);
 
 // GET request for one tea
 router.get('/tea/:id', teaController.teaDetail);

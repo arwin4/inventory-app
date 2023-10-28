@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const Dummy = require('./models/dummy');
 const Tea = require('./models/tea');
-const TeaType = require('./models/teaType');
+const TeaCategory = require('./models/teaCategory');
 require('dotenv').config();
 
 async function addDummy() {
@@ -12,13 +12,13 @@ async function addDummy() {
 }
 
 async function addTeas() {
-  // Create tea type documents
-  const blackTea = new TeaType({
+  // Create tea category documents
+  const blackTea = new TeaCategory({
     name: 'Black Tea',
     description: 'More oxidized and usually stronger in flavor than other teas',
   });
 
-  const greenTea = new TeaType({
+  const greenTea = new TeaCategory({
     name: 'Green Tea',
     description: 'Less withered and oxidized than black teas',
   });
@@ -28,7 +28,7 @@ async function addTeas() {
   // Create tea documents
   const earlGrey = new Tea({
     name: 'Earl Grey',
-    type: blackTea._id,
+    category: blackTea._id,
     description:
       'Earl Grey is a black tea variety blended with the fragrant oil of bergamot oranges, lending it a distinctive citrus aroma and flavor',
     brewTemp: 100,
@@ -38,7 +38,7 @@ async function addTeas() {
 
   const darjeeling = new Tea({
     name: 'Darjeeling',
-    type: blackTea._id,
+    category: blackTea._id,
     description:
       'Grown in the Himalayan Darjeeling region of India, Darjeeling tea is a lightly oxidized black tea known for its floral and aromatic character',
     brewTemp: 95,
@@ -48,7 +48,7 @@ async function addTeas() {
 
   const sencha = new Tea({
     name: 'Sencha',
-    type: greenTea._id,
+    category: greenTea._id,
     description:
       'Sencha is a common Japanese green tea variety, characterized by its vibrant green color, mildly grassy flavor, and slightly sweet undertones',
     brewTemp: 80,
@@ -58,7 +58,7 @@ async function addTeas() {
 
   const hojicha = new Tea({
     name: 'Hojicha',
-    type: greenTea._id,
+    category: greenTea._id,
     description:
       'Hojicha is a roasted Japanese green tea made by roasting the leaves, resulting in a nutty, earthy flavor and a reddish-brown infusion',
     brewTemp: 82,
