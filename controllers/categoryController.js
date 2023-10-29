@@ -44,11 +44,11 @@ exports.newCategoryPost = [
   body('name', 'Category name must have at least one character')
     .trim()
     .isLength({ min: 1 })
-    .escape(),
+    .unescape(),
   body('description', 'Please fill in a short description')
     .trim()
     .isLength({ min: 1 })
-    .escape(),
+    .unescape(),
 
   asyncHandler(async (req, res) => {
     const errors = validationResult(req);
@@ -100,11 +100,11 @@ exports.updateCategorySubmit = [
   body('name', 'Category name must have at least one character')
     .trim()
     .isLength({ min: 1 })
-    .escape(),
+    .unescape(),
   body('description', 'Please fill in a short description')
     .trim()
     .isLength({ min: 1 })
-    .escape(),
+    .unescape(),
 
   asyncHandler(async (req, res) => {
     const errors = validationResult(req);
