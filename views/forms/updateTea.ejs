@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update <%= tea.name %></title>
+  </head>
+  <body>
+    <a href="/catalog">Back to catalog</a>
+    <h1>Editing <%= tea.name %></h1>
+    <form method="post" action="">
+      <% if (errors) { errors.forEach(error => { %>
+      <li><%= error.msg %></li>
+      <% }); } %>
+
+      <div>
+        <label for="name">Name</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          required="true"
+          value="<% if (typeof tea !== 'undefined') { %><%= tea.name %><% } %>"
+        />
+      </div>
+
+      <div>
+        <label for="description">Short description</label>
+        <input
+          type="text"
+          name="description"
+          id="description"
+          required="true"
+          value="<% if (typeof tea !== 'undefined') { %><%= tea.description %><% } %>"
+        />
+      </div>
+
+      <div>
+        <label for="temp">Brew temp (°C)</label>
+        <input
+          type="number"
+          name="temp"
+          id="temp"
+          min="0"
+          required="true"
+          value="<% if (typeof tea !== 'undefined') { %><%= tea.brewTemp %><% } %>"
+        />
+      </div>
+
+      <div>
+        <label for="stock">Number in stock</label>
+        <input
+          type="number"
+          name="stock"
+          id="stock"
+          min="0"
+          required="true"
+          value="<% if (typeof tea !== 'undefined') { %><%= tea.currentStock %><% } %>"
+        />
+      </div>
+
+      <div>
+        <label for="price">Price (€/kg)</label>
+        <input
+          type="number"
+          name="price"
+          id="price"
+          min="0"
+          step="0.01"
+          required="true"
+          value="<% if (typeof tea !== 'undefined') { %><%= tea.price %><% } %>"
+        />
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

@@ -18,6 +18,10 @@
       <li>€ <%= tea.price %>/kg</li>
     </ul>
 
+    <button onclick="window.location.href='/catalog/update-tea/<%=tea.id%>'">
+      Update tea details
+    </button>
+
     <button onclick="window.location.href='/catalog/delete-tea/<%=tea.id%>'">
       Delete from catalog
     </button>

@@ -46,4 +46,10 @@ router.post('/new-tea', teaController.newTeaPost);
 // GET request for one tea
 router.get('/delete-tea/:id', teaController.deleteTea);
 
+// GET request for updating tea
+router.get('/update-tea/:id', teaController.updateTea);
+
+// POST request for update tea form submission
+router.post('/update-tea/:id', teaController.updateTeaPost);
+
 module.exports = router;
