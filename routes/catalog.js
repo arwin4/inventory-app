@@ -43,7 +43,7 @@ router.get('/new-tea', teaController.newTea);
 // POST request for new tea form
 router.post('/new-tea', teaController.newTeaPost);
 
-// GET request for one tea
+// GET request for deleting tea
 router.get('/delete-tea/:id', teaController.deleteTea);
 
 // GET request for updating tea
