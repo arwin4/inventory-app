@@ -14,8 +14,11 @@ const teaSchema = new mongoose.Schema({
     min: [0, 'Stock cannot be negative'],
     required: true,
   },
-  url: String,
   category: [{ type: mongoose.Schema.ObjectId, ref: 'TeaCategory' }],
+});
+
+teaSchema.virtual('url').get(function () {
+  return `/catalog/tea/${this._id}`;
 });
 
 module.exports = mongoose.model('Tea', teaSchema);
