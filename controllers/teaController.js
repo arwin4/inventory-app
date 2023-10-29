@@ -230,8 +230,18 @@ exports.changeCategory = asyncHandler(async (req, res) => {
 });
 
 // Handle changing category submission
-// TODO: validation
 exports.changeCategoryPost = [
+  // Validate the received category's existence
+  asyncHandler(async (req, res, next) => {
+    const categoryId = req.body.category;
+    const categoryExists = await teaCategory.findById(categoryId).exec();
+    if (!categoryExists) {
+      res.status(404).render('errors/404', { notFound: 'Category' });
+      return;
+    }
+    next();
+  }),
+
   asyncHandler(async (req, res) => {
     const teaId = req.params.id;
     const categoryId = req.body.category;
