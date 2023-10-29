@@ -35,8 +35,7 @@ exports.categoryDetail = asyncHandler(async (req, res) => {
 
 // Display form for new category
 exports.newCategory = asyncHandler(async (req, res) => {
-  const errors = null;
-  res.render('forms/newCategoryForm', { errors });
+  res.render('forms/newCategoryForm', { errors: null });
 });
 
 // Handle new category form submission
@@ -92,8 +91,7 @@ exports.updateCategory = asyncHandler(async (req, res) => {
     return;
   }
 
-  const errors = null;
-  res.render('forms/update-category', { category, errors });
+  res.render('forms/update-category', { category, errors: null });
 });
 
 // Handle update category form submission
