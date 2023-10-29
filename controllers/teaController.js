@@ -22,3 +22,15 @@ exports.teaDetail = asyncHandler(async (req, res) => {
 
   res.render('teaDetail', { tea: thisTea, categoryId });
 });
+
+// Delete tea
+exports.deleteTea = asyncHandler(async (req, res) => {
+  const teaId = req.params.id;
+  try {
+    await tea.findByIdAndDelete(teaId);
+  } catch (error) {
+    res.status(404).render('errors/404', { notFound: 'Tea' });
+    return;
+  }
+  res.redirect('/catalog');
+});

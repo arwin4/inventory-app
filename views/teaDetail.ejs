@@ -17,5 +17,9 @@
       <li><%= tea.currentStock %> in stock</li>
       <li>€ <%= tea.price %>/kg</li>
     </ul>
+
+    <button onclick="window.location.href='/catalog/delete-tea/<%=tea.id%>'">
+      Delete from catalog
+    </button>
   </body>
 </html>

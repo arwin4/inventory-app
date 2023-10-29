@@ -9,11 +9,13 @@ const teaController = require('../controllers/teaController');
 // Render catalog at index
 router.get('/', categoryController.index);
 
-// GET request for one tea category
-router.get('/category/:id', categoryController.categoryDetail);
-
 // GET request for one tea
 router.get('/tea/:id', teaController.teaDetail);
+
+/* CATEGORY */
+
+// GET request for one tea category
+router.get('/category/:id', categoryController.categoryDetail);
 
 // GET request for new category
 router.get('/new-category', categoryController.newCategory);
@@ -32,5 +34,10 @@ router.post('/update-category/:id', categoryController.updateCategorySubmit);
 
 // GET request for confirmation of category deletion
 router.get('/category-deleted/:id', categoryController.categoryDeleted);
+
+/* TEA */
+
+// GET request for one tea
+router.get('/delete-tea/:id', teaController.deleteTea);
 
 module.exports = router;
