@@ -91,7 +91,7 @@ exports.updateCategory = asyncHandler(async (req, res) => {
     return;
   }
 
-  res.render('forms/update-category', { category, errors: null });
+  res.render('forms/updateCategory', { category, errors: null });
 });
 
 // Handle update category form submission
@@ -117,7 +117,7 @@ exports.updateCategorySubmit = [
 
     if (!errors.isEmpty()) {
       // There are errors. Render form again with sanitized values and error message(s).
-      res.render('forms/update-category', {
+      res.render('forms/updateCategory', {
         category,
         errors: errors.array(),
       });
