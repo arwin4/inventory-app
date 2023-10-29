@@ -37,6 +37,12 @@ router.get('/category-deleted/:id', categoryController.categoryDeleted);
 
 /* TEA */
 
+// GET request for new tea
+router.get('/new-tea', teaController.newTea);
+
+// POST request for new tea form
+router.post('/new-tea', teaController.newTeaPost);
+
 // GET request for one tea
 router.get('/delete-tea/:id', teaController.deleteTea);
 

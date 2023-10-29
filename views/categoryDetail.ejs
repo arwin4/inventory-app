@@ -19,6 +19,12 @@
     <% }) %>
 
     <button
+      onclick="window.location.href='/catalog/new-tea?category=<%=category.id%>'"
+    >
+      Add tea to category
+    </button>
+
+    <button
       onclick="window.location.href='/catalog/update-category/<%=category.id%>'"
     >
       Update category info
