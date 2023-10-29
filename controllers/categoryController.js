@@ -3,7 +3,6 @@ const { body, validationResult } = require('express-validator');
 
 const TeaCategory = require('../models/teaCategory');
 const tea = require('../models/tea');
-const teaCategory = require('../models/teaCategory');
 
 // Display list of all tea categories
 exports.index = asyncHandler(async (req, res) => {
