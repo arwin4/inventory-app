@@ -203,6 +203,50 @@ exports.updateTeaPost = [
   }),
 ];
 
+// Change category
+exports.changeCategory = asyncHandler(async (req, res) => {
+  const teaId = req.params.id;
+
+  let tea;
+  try {
+    tea = await Tea.findById(teaId);
+  } catch (error) {
+    res.status(404).render('errors/404', { notFound: 'Tea' });
+    return;
+  }
+
+  const categoryId = tea.category[0]._id.toString();
+
+  let category;
+  try {
+    category = await teaCategory.findById(categoryId);
+  } catch (error) {
+    res.status(404).render('errors/404', { notFound: 'Category' });
+    return;
+  }
+
+  const allCategories = await teaCategory.find().exec();
+  res.render('forms/changeTeaCategory', { tea, category, allCategories });
+});
+
+// Handle changing category submission
+// TODO: validation
+exports.changeCategoryPost = [
+  asyncHandler(async (req, res) => {
+    const teaId = req.params.id;
+    const categoryId = req.body.category;
+    let tea;
+    try {
+      tea = await Tea.findByIdAndUpdate(teaId, {
+        category: { _id: categoryId },
+      });
+    } catch (error) {
+      res.status(404).render('errors/404', { notFound: 'Tea' });
+    }
+    res.redirect(tea.url);
+  }),
+];
+
 // Delete tea
 exports.deleteTea = asyncHandler(async (req, res) => {
   const teaId = req.params.id;

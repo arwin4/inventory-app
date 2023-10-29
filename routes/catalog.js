@@ -52,4 +52,10 @@ router.get('/update-tea/:id', teaController.updateTea);
 // POST request for update tea form submission
 router.post('/update-tea/:id', teaController.updateTeaPost);
 
+// GET request for changing tea category
+router.get('/change-tea-category/:id', teaController.changeCategory);
+
+// POST request for changing tea category
+router.post('/change-tea-category/:id', teaController.changeCategoryPost);
+
 module.exports = router;
