@@ -88,7 +88,7 @@ exports.updateCategory = asyncHandler(async (req, res) => {
   try {
     category = await TeaCategory.findById(categoryId).exec();
   } catch (error) {
-    res.status(404).render('errors/category-404');
+    res.status(404).render('errors/404', { notFound: 'Category' });
     return;
   }
 
@@ -136,7 +136,7 @@ exports.deleteCategory = asyncHandler(async (req, res) => {
   const categoryId = req.params.id;
   const category = await TeaCategory.findById(categoryId).exec();
   if (category === null) {
-    res.render('delete/category-does-not-exist');
+    res.render('errors/404', { notFound: 'Category' });
   }
 
   // Find all teas of this category
