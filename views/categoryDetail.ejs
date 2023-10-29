@@ -19,6 +19,12 @@
     <% }) %>
 
     <button
+      onclick="window.location.href='/catalog/update-category/<%=category.id%>'"
+    >
+      Update category info
+    </button>
+
+    <button
       onclick="window.location.href='/catalog/delete-category/<%=category.id%>'"
     >
       Delete this category

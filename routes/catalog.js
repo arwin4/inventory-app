@@ -24,6 +24,12 @@ router.post('/new-category', categoryController.newCategoryPost);
 // GET request for delete category
 router.get('/delete-category/:id', categoryController.deleteCategory);
 
+// GET request for updating category
+router.get('/update-category/:id', categoryController.updateCategory);
+
+// POST request for updating category
+router.post('/update-category/:id', categoryController.updateCategorySubmit);
+
 // GET request for confirmation of category deletion
 router.get('/category-deleted/:id', categoryController.categoryDeleted);
 

@@ -3,6 +3,7 @@ const { body, validationResult } = require('express-validator');
 
 const TeaCategory = require('../models/teaCategory');
 const tea = require('../models/tea');
+const teaCategory = require('../models/teaCategory');
 
 // Display list of all tea categories
 exports.index = asyncHandler(async (req, res) => {
@@ -76,6 +77,57 @@ exports.newCategoryPost = [
         await category.save();
         res.redirect(category.url);
       }
+    }
+  }),
+];
+
+// Display update category form
+exports.updateCategory = asyncHandler(async (req, res) => {
+  const categoryId = req.params.id;
+
+  let category;
+  try {
+    category = await TeaCategory.findById(categoryId).exec();
+  } catch (error) {
+    res.status(404).render('errors/category-404');
+    return;
+  }
+
+  const errors = null;
+  res.render('forms/update-category', { category, errors });
+});
+
+// Handle update category form submission
+exports.updateCategorySubmit = [
+  // Validate and sanitize
+  body('name', 'Category name must have at least one character')
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+  body('description', 'Please fill in a short description')
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+
+  asyncHandler(async (req, res) => {
+    const errors = validationResult(req);
+
+    const category = new TeaCategory({
+      name: req.body.name,
+      description: req.body.description,
+      _id: req.params.id, // create new object with old id
+    });
+
+    if (!errors.isEmpty()) {
+      // There are errors. Render form again with sanitized values and error message(s).
+      res.render('forms/update-category', {
+        category,
+        errors: errors.array(),
+      });
+    } else {
+      // Data was valid, so update
+      await TeaCategory.findByIdAndUpdate(req.params.id, category);
+      res.redirect(category.url);
     }
   }),
 ];

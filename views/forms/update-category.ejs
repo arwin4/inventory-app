@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update <%= category.name %></title>
+  </head>
+  <body>
+    <a href="/catalog">Back to catalog</a>
+    //
+    <a href="/catalog/category/<%=category.id%>">Back to category</a>
+
+    <h1>Editing <%= category.name %> details</h1>
+
+    <form method="post" action="">
+      <% if (errors) { errors.forEach(error => { %>
+      <li><%= error.msg %></li>
+      <% }); } %>
+
+      <div>
+        <label for="name">Category name</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          required="true"
+          value="<%= category.name %>"
+        />
+      </div>
+
+      <div>
+        <label for="description">Short description</label>
+        <input
+          type="text"
+          name="description"
+          id="description"
+          value="<%= category.description %>"
+        />
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
