@@ -9,9 +9,6 @@ const teaController = require('../controllers/teaController');
 // Render catalog at index
 router.get('/', categoryController.index);
 
-// GET request for one tea
-router.get('/tea/:id', teaController.teaDetail);
-
 /* CATEGORY */
 
 // GET request for one tea category
@@ -36,6 +33,9 @@ router.post('/update-category/:id', categoryController.updateCategorySubmit);
 router.get('/category-deleted/:id', categoryController.categoryDeleted);
 
 /* TEA */
+
+// GET request for one tea
+router.get('/tea/:id', teaController.teaDetail);
 
 // GET request for new tea
 router.get('/new-tea', teaController.newTea);
