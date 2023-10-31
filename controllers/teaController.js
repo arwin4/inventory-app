@@ -44,18 +44,18 @@ exports.newTeaPost = [
   body('name', 'Tea name must have at least one character')
     .trim()
     .isLength({ min: 1 })
-    .unescape(),
+    .escape(),
   body('description', 'Description cannot be empty')
     .trim()
     .isLength({ min: 1 })
-    .unescape(),
+    .escape(),
   body('temp')
     .trim()
     .isLength({ min: 1 })
     .withMessage('Brew temp cannot be empty')
     .toInt()
     .isInt({ min: 0 })
-    .unescape()
+    .escape()
     .withMessage('Brew temp cannot be negative'),
   body('stock')
     .trim()
@@ -64,7 +64,7 @@ exports.newTeaPost = [
     .toInt()
     .isInt({ min: 0 })
     .withMessage('Number in stock cannot be negative')
-    .unescape(),
+    .escape(),
   body('price')
     .trim()
     .isLength({ min: 1 })
@@ -72,7 +72,7 @@ exports.newTeaPost = [
     .toFloat()
     .isFloat({ min: 0 })
     .withMessage('Price cannot be negative')
-    .unescape(),
+    .escape(),
 
   asyncHandler(async (req, res) => {
     const errors = validationResult(req);
@@ -137,18 +137,18 @@ exports.updateTeaPost = [
   body('name', 'Tea name must have at least one character')
     .trim()
     .isLength({ min: 1 })
-    .unescape(),
+    .escape(),
   body('description', 'Description cannot be empty')
     .trim()
     .isLength({ min: 1 })
-    .unescape(),
+    .escape(),
   body('temp')
     .trim()
     .isLength({ min: 1 })
     .withMessage('Brew temp cannot be empty')
     .toInt()
     .isInt({ min: 0 })
-    .unescape()
+    .escape()
     .withMessage('Brew temp cannot be negative'),
   body('stock')
     .trim()
@@ -157,7 +157,7 @@ exports.updateTeaPost = [
     .toInt()
     .isInt({ min: 0 })
     .withMessage('Number in stock cannot be negative')
-    .unescape(),
+    .escape(),
   body('price')
     .trim()
     .isLength({ min: 1 })
@@ -165,7 +165,7 @@ exports.updateTeaPost = [
     .toFloat()
     .isFloat({ min: 0 })
     .withMessage('Price cannot be negative')
-    .unescape(),
+    .escape(),
 
   asyncHandler(async (req, res) => {
     const errors = validationResult(req);
